@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Annotation Video Player</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link href="http://vjs.zencdn.net/5.19/video-js.min.css" rel="stylesheet">
+	<link href="./assets/css/style.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+	<script src="http://vjs.zencdn.net/5.19/video.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./assets/js/custom.js"></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<script>window.HELP_IMPROVE_VIDEOJS = false;</script>
+</head>
+<body>
+	<div class="content">
+		<div class="header">
+			<div class="header-logo">
+				<img src="./assets/images/logo.png">
+			</div>
+			<div class="nav-bar">
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				    <ul class="nav navbar-nav">
+				      <li id="nav-shape"><a href="#" onclick="navigate('shape-panel', 'nav-shape')">Shape</a></li>
+				      <li class="active" id="nav-font"><a href="#" onclick="navigate('font-panel', 'nav-font')">Font Family</a></li>
+				    </ul>
+				  </div>
+				</nav>
+			</div>
+		</div>
+		<div class="main-content">
+			<div class="video-content">
+				<div class="video-action">
+					<span>Add</span><img src="./assets/images/add.png">
+				</div>
+				<div class="video-wrapper" id="videos">
+					<video id="my-player" class="video-js" controls preload="metadata" poster="http://vjs.zencdn.net/v/oceans.png" data-setup='{}' style="width: 720px; height: 420px;">
+					  	<source src="./assets/videos/annotations.mp4" type="video/mp4"></source>
+					  	<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that
+					    	<a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+					  	</p>
+					</video>
+					<div id="annotation-template"><div class="annotation" id="annotation-{{ID}}" style="top:{{TOP}}px; left: {{LEFT}}px; background: {{BACKGROUND}}; font-size: {{FONT-SIZE}}pt;" data-start={{DATA-START}} data-end={{DATA-END}} onClick="onVideoAnnotation('annotation-{{SEL_ID}}');">My Annotation</div></div>
+				</div>
+			</div>
+			<div class="right-panel">
+				<div class="nav-panel" id="shape-panel">
+					<div id="component-8733" class="post-component post-panel post-clickable-panel post-tile">
+						<div style="height:100%;width:100%;background:url(./assets/images/shape/backing_icon_none.png) no-repeat center;background-size:contain;"></div>
+						<div class="overlay"></div>
+					</div>
+					<div id="component-8735" class="post-component post-panel post-clickable-panel post-tile" style="margin-bottom: 100px;">
+						<div style="height:100%;width:100%;background:url(./assets/images/shape/backing_icon_shadow.png) no-repeat center;background-size:contain;"></div>
+						<div class="overlay shuffle-overlay"></div>
+					</div>
+				</div>
+				<div class="nav-panel" id="font-panel">
+					<h4>Text</h4>
+					<textarea class="ta-annotation" rows="4" cols="28"></textarea>
+					<hr>
+					<h4>Background Color</h4>
+					<input id="inp-bgcolor" type="color">
+					<hr>
+					<h4>Font Color</h4>
+					<input id="inp-fcolor" type="color">
+					<hr>
+					<h4>Font Size</h4>
+					<select id="sel-fsize">
+						<option value="16">16px</option>
+						<option value="18">18px</option>
+						<option value="20">20px</option>
+						<option value="22">22px</option>
+						<option value="24">24px</option>
+						<option value="26">26px</option>
+						<option value="28">28px</option>
+					</select>
+				</div>
+
+				<div id="annotationAction" class="sidebar-actions-rail">
+					<button id="AnnotationCancel" class="post-button">Remove</button>
+					<button id="AnnotationSave" class="post-button">Save</button>
+				</div>
+			</div>
+
+			<div class="right-panel" id="right-overlay">
+			</div>
+			<div class="timeline-panel">
+				<div class="timeline-panelbar">
+					<div class="timetract">
+
+					</div>
+					<div class="timeline" id="timeline-1">
+					</div>
+					<div class="timeline" id="timeline-2">
+					</div>
+					<div class="timeline" id="timeline-3">
+					</div>
+				</div>
+				<div class="time-trackbar">
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
